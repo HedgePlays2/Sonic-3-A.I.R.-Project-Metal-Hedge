@@ -14,22 +14,35 @@
 - Metal Hedge is Eggman's robotic antagonist.
 - **Current random boss target: Launch Base Zone Act 2.**
 
+## Research so far
+
+The Sonic 3 & Knuckles disassembly identifies Launch Base's boss mapping files as:
+
+- `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm`
+- `Levels/LBZ/Misc Object Data/Map - Final Boss 2.asm`
+
+The disassembly also includes Launch Base boss palette data such as `Levels/LBZ/Palettes/Final Boss 1.bin` and `Levels/LBZ/Palettes/End Boss.bin`. These are useful leads, not a complete replacement package. The precise art binary, compression, mapping relationship, and ROM injection offset must be verified against the exact boss assets before we commit an override.
+
+Sonic 3 A.I.R. raw-data mods use binary files under `rawdata/` plus a JSON entry containing a `File` and a `RomInject` address. A wrong offset can overwrite unrelated ROM data, so do not guess the address. The GameBanana boss-sprite tutorial recommends extracting/editing the boss art with Flex 2 using the matching mapping and palette, then injecting the edited binary.
+
 ## First implementation target: Launch Base Zone Act 2 boss
 
 The goal is to replace or adapt the target boss's appearance so it becomes Metal Hedge-themed, without breaking the encounter or other playable characters.
 
 ### Before editing assets
 
-1. Inspect the installed Sonic 3 A.I.R. version and its modding documentation.
-2. Identify the exact Launch Base Zone Act 2 boss sprite/assets and any matching definitions or data files.
-3. Verify the supported override paths and formats. Do not guess filenames or assume that a sprite-only replacement can change the boss.
-4. Preserve a clean copy of the original assets for comparison.
+1. Obtain the Sonic 3 & Knuckles disassembly and the matching Sonic 3 A.I.R. modding documentation.
+2. Inspect the Launch Base boss art, mappings, compression format, and palette together.
+3. Use a compatible editor such as Flex 2 to export the mapped sprite art, create the Metal Hedge version, and import it back without changing the layout unexpectedly.
+4. Verify the correct ROM injection offset from the exact source ROM/disassembly and document the source of that offset.
+5. Keep the original art and data available for comparison.
 
 ### Implementation and test checklist
 
-- [ ] Confirm the boss asset paths and supported replacement method.
+- [ ] Confirm the exact art file, compression format, and matching mappings.
+- [ ] Confirm the ROM injection offset from a reliable source.
 - [ ] Create Metal Hedge-inspired pixel art in the required format and dimensions.
-- [ ] Add the replacement files at the correct relative paths.
+- [ ] Add the replacement binary and `rawdata/rominjections.json`.
 - [ ] Install/enable the mod and test the Launch Base Zone Act 2 encounter.
 - [ ] Verify the boss renders correctly and its behavior remains functional.
 - [ ] Verify Sonic, Tails, and Knuckles are all still playable.
