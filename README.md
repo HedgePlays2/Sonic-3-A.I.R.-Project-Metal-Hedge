@@ -53,6 +53,14 @@ Dr. Eggman has created Metal Hedge, a machine designed to imitate Sonic's speed 
 - **Game data:** A legally obtained, compatible Sonic 3 & Knuckles ROM is required by the game.
 - **Compatibility:** The starter framework and metadata still need testing against the target game version.
 
-## Credits and disclaimer
+## Credits
 
-This is a fan project and is not an official SEGA release. Sonic and related official characters and assets belong to their respective rights holders. Original Metal Hedge artwork, writing, and project-created assets will be credited as they are added.
+- **J.I.B** — credited for the original Metal Sonic artwork.
+- **TannerTH25** — uploader of the *Metal Sonic (Sonic 3-Style)* custom/edited sprite sheet on The Spriters Resource: https://www.spriters-resource.com/custom_edited/sonicthehedgehogcustoms/asset/237787/
+- **SEGA and the original Sonic 3 & Knuckles / Sonic 3 A.I.R. creators** — the original game characters, assets, and engine belong to their respective rights holders.
+
+The Metal Sonic sprite sheet is third-party artwork and is not claimed as original work by HedgePlays2. Credit is provided for attribution; permission and applicable reuse terms must be checked before redistributing the artwork with the mod.
+
+## Disclaimer
+
+This is a fan project and is not an official SEGA release. Sonic and related official characters and assets belong to their respective rights holders.
