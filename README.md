@@ -8,7 +8,7 @@ Dr. Eggman has created Metal Hedge, a machine designed to imitate Sonic's speed 
 
 At first, Metal Hedge watches Sonic from a distance before escaping. Sonic follows the trail toward a later confrontation. The story and encounters will grow as development continues.
 
-> **Important:** Sonic is the main protagonist and remains playable. Hedge is not a character in this story. Metal Hedge is the robotic antagonist created by Dr. Eggman.
+> **Important:** Sonic is the main protagonist and remains playable. Metal Hedge is the robotic antagonist created by Dr. Eggman.
 
 ## Development goals
 
