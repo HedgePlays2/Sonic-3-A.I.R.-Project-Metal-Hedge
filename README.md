@@ -33,7 +33,17 @@ The project will be built in small, testable steps so the original game remains 
 
 ## Current status
 
-**Early prototype setup.** The repository now includes an initial `mod.json` metadata file. It has not yet been tested in Sonic 3 A.I.R., and no custom sprites, story scenes, or gameplay features have been implemented.
+**Mod framework starter added.** The repository now includes `scripts/main.lemon` as a no-op script entry point, plus documented `sprites/`, `rawdata/`, and `audio/` asset locations and a `MOD_DEVELOPMENT.md` checklist. This deliberately does not change gameplay yet. The framework has not been tested in Sonic 3 A.I.R., and Metal Hedge is not yet implemented in-game.
+
+## Mod development structure
+
+- `mod.json` — mod metadata
+- `icon.png` — mod icon
+- `scripts/main.lemon` — script entry point (currently no-op)
+- `sprites/` — reserved for sprite replacements and matching definition files
+- `rawdata/` — reserved for future level/data edits
+- `audio/` — reserved for future audio overrides
+- `MOD_DEVELOPMENT.md` — implementation and testing checklist
 
 ## Requirements and compatibility
 
