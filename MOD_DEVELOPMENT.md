@@ -6,13 +6,20 @@
 - `icon.png`: mod icon.
 - `scripts/main.lemon`: intentionally no-op script entry point.
 - `sprites/`, `rawdata/`, and `audio/`: reserved for future assets.
+- Root-level reference image: `Custom _ Edited - Sonic the Hedgehog Customs - Metal Sonic - Metal Sonic (Sonic 3-Style).png`.
 
 ## Design requirements
 
 - Sonic, Tails, and Knuckles all remain playable.
 - Keep the original controls and physics.
 - Metal Hedge is Eggman's robotic antagonist.
-- **Current random boss target: Launch Base Zone Act 2.**
+- **Current boss target: Launch Base Zone Act 2.**
+
+## Sprite reference and credits
+
+The repository now contains the Metal Sonic (Sonic 3-Style) sprite sheet as a **reference image** for planning the boss appearance. The image's own credits panel names J.I.B and Tanner; the project README credits both and links to the source listing on The Spriters Resource.
+
+This PNG is not yet a game-ready replacement. It must not be treated as if it already has the game's exact tile data, mappings, palette format, or compression. Before redistributing the sprite sheet with a public mod release, verify the original artwork's reuse permissions.
 
 ## Research so far
 
@@ -33,15 +40,19 @@ The goal is to replace or adapt the target boss's appearance so it becomes Metal
 
 1. Obtain the Sonic 3 & Knuckles disassembly and the matching Sonic 3 A.I.R. modding documentation.
 2. Inspect the Launch Base boss art, mappings, compression format, and palette together.
-3. Use a compatible editor such as Flex 2 to export the mapped sprite art, create the Metal Hedge version, and import it back without changing the layout unexpectedly.
-4. Verify the correct ROM injection offset from the exact source ROM/disassembly and document the source of that offset.
-5. Keep the original art and data available for comparison.
+3. Make a green Metal Hedge art draft from the credited sprite reference, while preserving individual animation frames and transparent pixels. Keep this as a separate working asset; do not overwrite the original reference.
+4. Use a compatible editor such as Flex 2 to export the mapped in-game boss sprite, create/import the Metal Hedge version, and preserve the expected layout.
+5. Verify the correct ROM injection offset from the exact source ROM/disassembly and document the source of that offset.
 
 ### Implementation and test checklist
 
-- [ ] Confirm the exact art file, compression format, and matching mappings.
+- [x] Locate and retain the credited Metal Sonic (Sonic 3-Style) reference sheet in the repository.
+- [x] Add J.I.B and TannerTH25 attribution to the README.
+- [ ] Verify permission/terms for redistributing the reference artwork.
+- [ ] Confirm the exact target boss art file, compression format, and matching mappings.
+- [ ] Create a green Metal Hedge sprite draft that preserves the reference sheet's frame layout.
 - [ ] Confirm the ROM injection offset from a reliable source.
-- [ ] Create Metal Hedge-inspired pixel art in the required format and dimensions.
+- [ ] Convert/import the replacement into the required game format.
 - [ ] Add the replacement binary and `rawdata/rominjections.json`.
 - [ ] Install/enable the mod and test the Launch Base Zone Act 2 encounter.
 - [ ] Verify the boss renders correctly and its behavior remains functional.
