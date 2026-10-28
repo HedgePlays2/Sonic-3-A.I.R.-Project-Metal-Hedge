@@ -1,0 +1,8 @@
+// Sonic 3 A.I.R. — Project Metal Hedge
+// Script-mod entry point.
+//
+// This is intentionally a no-op starter file: no game functions are
+// overridden yet, so original Sonic controls and gameplay stay unchanged.
+//
+// Next step: add a small, documented script feature after verifying the
+// API and function signatures against the target Sonic 3 A.I.R. version.
