@@ -17,9 +17,9 @@ The project will be built in small, testable steps so the original game remains 
 ### Version 0.1 — First Contact
 
 - [x] Create the project repository.
-- [ ] Document the story and development plan.
-- [ ] Confirm the current Sonic 3 A.I.R. mod format and required metadata.
-- [ ] Add a minimal, loadable mod skeleton.
+- [x] Document the story and development plan.
+- [x] Add an initial `mod.json` metadata file.
+- [ ] Confirm the metadata and folder structure against the current Sonic 3 A.I.R. mod documentation.
 - [ ] Create or adapt Metal Hedge's pixel-art sprites.
 - [ ] Prototype the first story encounter while keeping Sonic's original controls and physics.
 - [ ] Test the mod in Sonic 3 A.I.R. and document any requirements.
@@ -33,13 +33,13 @@ The project will be built in small, testable steps so the original game remains 
 
 ## Current status
 
-**Early planning stage.** The repository currently contains the project README only. No playable mod has been implemented yet.
+**Early prototype setup.** The repository now includes an initial `mod.json` metadata file. It has not yet been tested in Sonic 3 A.I.R., and no custom sprites, story scenes, or gameplay features have been implemented.
 
 ## Requirements and compatibility
 
 - **Game:** Sonic 3 A.I.R.
 - **Game data:** A legally obtained, compatible Sonic 3 & Knuckles ROM is required by the game.
-- **Mod format:** The exact metadata and folder structure will be confirmed against the current Sonic 3 A.I.R. mod documentation before implementation.
+- **Compatibility:** The mod metadata and structure still need to be tested in the target game version.
 
 ## Contributions and credits
 
