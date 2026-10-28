@@ -21,7 +21,7 @@ The Sonic 3 & Knuckles disassembly identifies Launch Base's boss mapping files a
 - `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm`
 - `Levels/LBZ/Misc Object Data/Map - Final Boss 2.asm`
 
-The disassembly also includes Launch Base boss palette data such as `Levels/LBZ/Palettes/Final Boss 1.bin` and `Levels/LBZ/Palettes/End Boss.bin`. These are useful leads, not a complete replacement package. The precise art binary, compression, mapping relationship, and ROM injection offset must be verified against the exact boss assets before we commit an override.
+The disassembly's SonLVL project identifies the mapped boss artwork as `Levels/LBZ/Nemesis Art/Final Boss 1.nem`, paired with `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm` (the project uses this pair for multiple frames). Palette leads include `Levels/LBZ/Palettes/Final Boss 1.bin` and `Levels/LBZ/Palettes/End Boss.bin`. This confirms a source art filename and mapping relationship, but not a ready-to-inject A.I.R. replacement: the exact binary format/compression, the boss's runtime use in Act 2, and the ROM injection offset still need verification.
 
 Sonic 3 A.I.R. raw-data mods use binary files under `rawdata/` plus a JSON entry containing a `File` and a `RomInject` address. A wrong offset can overwrite unrelated ROM data, so do not guess the address. The GameBanana boss-sprite tutorial recommends extracting/editing the boss art with Flex 2 using the matching mapping and palette, then injecting the edited binary.
 
