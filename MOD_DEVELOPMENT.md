@@ -5,55 +5,71 @@
 - `mod.json`: mod metadata.
 - `icon.png`: mod icon.
 - `scripts/main.lemon`: intentionally no-op script entry point.
-- `sprites/`, `rawdata/`, and `audio/`: reserved for future assets.
-- Root-level reference image: `Custom _ Edited - Sonic the Hedgehog Customs - Metal Sonic - Metal Sonic (Sonic 3-Style).png`.
+- `sprites/`, `rawdata/`, and `audio/`: reserved for runtime assets.
+- Root-level approved artwork: `metalhedge.png`.
 
-## Design requirements
+## Locked design requirements
 
 - Sonic, Tails, and Knuckles all remain playable.
 - Keep the original controls and physics.
 - Metal Hedge is Eggman's robotic antagonist.
 - **Current boss target: Launch Base Zone Act 2.**
+- `metalhedge.png` is the approved visual source of truth. Do not substitute the discarded six-pose SVG concept or invent replacement poses.
 
-## Sprite reference and credits
+## Approved Metal Hedge sprite sheet
 
-The repository now contains the Metal Sonic (Sonic 3-Style) sprite sheet as a **reference image** for planning the boss appearance. The image's own credits panel names J.I.B and Tanner; the project README credits both and links to the source listing on The Spriters Resource.
+The approved `metalhedge.png` sheet contains the actual Metal Hedge artwork and animation sequence. Its information panel specifies **16-color, 128×128 pixels per frame**. Preserve the artwork's green armor, yellow reactor, silver mechanical details, red shoes, proportions, silhouettes, and the existing animation poses.
 
-This PNG is not yet a game-ready replacement. It must not be treated as if it already has the game's exact tile data, mappings, palette format, or compression. Before redistributing the sprite sheet with a public mod release, verify the original artwork's reuse permissions.
+The sheet groups the poses into:
+- Idle
+- Walk
+- Run / dash
+- Jump
+- Spin attack
+- Hit / damage
+- Defeat / explode
+- Launch Base Zone Act 2 boss-fight sequence
 
-## Research so far
+Use the original sheet as the source when extracting frames. Keep it unchanged; put any cropped, cleaned, indexed, or converted working frames in a separate folder under `sprites/`. Do not redraw the character or use the discarded concept.
 
-The Sonic 3 & Knuckles disassembly identifies Launch Base's boss mapping files as:
+The sheet's credits panel names **J.I.B.** for the original Metal Sonic artwork and **TannerTH25** for the Metal Sonic (Sonic 3-Style) custom/edited sprite sheet. The project README links to the source listing. Check applicable reuse permissions before redistributing any third-party source artwork; the presence of the reference in this development repository does not itself establish redistribution permission.
+
+## Runtime conversion research
+
+The Sonic 3 & Knuckles disassembly identifies Launch Base boss mapping files:
 
 - `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm`
 - `Levels/LBZ/Misc Object Data/Map - Final Boss 2.asm`
 
-The disassembly's SonLVL project identifies the mapped boss artwork as `Levels/LBZ/Nemesis Art/Final Boss 1.nem`, paired with `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm` (the project uses this pair for multiple frames). Palette leads include `Levels/LBZ/Palettes/Final Boss 1.bin` and `Levels/LBZ/Palettes/End Boss.bin`. This confirms a source art filename and mapping relationship, but not a ready-to-inject A.I.R. replacement: the exact binary format/compression, the boss's runtime use in Act 2, and the ROM injection offset still need verification.
+The SonLVL project identifies `Levels/LBZ/Nemesis Art/Final Boss 1.nem` paired with `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm`. Palette leads include `Levels/LBZ/Palettes/Final Boss 1.bin` and `Levels/LBZ/Palettes/End Boss.bin`.
 
-Sonic 3 A.I.R. raw-data mods use binary files under `rawdata/` plus a JSON entry containing a `File` and a `RomInject` address. A wrong offset can overwrite unrelated ROM data, so do not guess the address. The GameBanana boss-sprite tutorial recommends extracting/editing the boss art with Flex 2 using the matching mapping and palette, then injecting the edited binary.
+These are source-art and mapping leads, not a ready-to-inject A.I.R. replacement. The exact target boss runtime use, compression type, tile layout, palette compatibility, and ROM injection offset still require verification. The GameBanana boss-sprite tutorial describes using Flex 2 with the correct compressed art type, mappings, and palette to export/import mapped sprites.
+
+Sonic 3 A.I.R. raw-data mods place binary files under `rawdata/` and describe them in JSON using `File` and `RomInject`. The injection address must be verified against the exact source ROM/disassembly. **Never guess a ROM offset**: an incorrect address can overwrite unrelated game data.
 
 ## First implementation target: Launch Base Zone Act 2 boss
 
-The goal is to replace or adapt the target boss's appearance so it becomes Metal Hedge-themed, without breaking the encounter or other playable characters.
+The goal is to adapt the target boss's appearance to Metal Hedge while preserving the encounter's existing behavior and the rest of the game.
 
-### Before editing assets
+### Before editing runtime assets
 
-1. Obtain the Sonic 3 & Knuckles disassembly and the matching Sonic 3 A.I.R. modding documentation.
-2. Inspect the Launch Base boss art, mappings, compression format, and palette together.
-3. Make a green Metal Hedge art draft from the credited sprite reference, while preserving individual animation frames and transparent pixels. Keep this as a separate working asset; do not overwrite the original reference.
-4. Use a compatible editor such as Flex 2 to export the mapped in-game boss sprite, create/import the Metal Hedge version, and preserve the expected layout.
-5. Verify the correct ROM injection offset from the exact source ROM/disassembly and document the source of that offset.
+1. Obtain the Sonic 3 & Knuckles disassembly and matching Sonic 3 A.I.R. modding documentation.
+2. Inspect the Launch Base boss art, compression, mappings, and palette together.
+3. Extract the required poses from the approved `metalhedge.png` sheet into separate working files, preserving the original frame artwork and transparency.
+4. Use Flex 2 (or a compatible verified toolchain) to match the game's mapped sprite layout and import the Metal Hedge frames.
+5. Verify the target boss's ROM injection offset from the exact source ROM/disassembly and document the evidence before creating an injection entry.
 
 ### Implementation and test checklist
 
-- [x] Locate and retain the credited Metal Sonic (Sonic 3-Style) reference sheet in the repository.
-- [x] Add J.I.B and TannerTH25 attribution to the README.
-- [ ] Verify permission/terms for redistributing the reference artwork.
-- [ ] Confirm the exact target boss art file, compression format, and matching mappings.
-- [ ] Create a green Metal Hedge sprite draft that preserves the reference sheet's frame layout.
+- [x] Keep the approved `metalhedge.png` source sheet in the repository.
+- [x] Record the approved frame categories, dimensions, palette depth, and design constraints.
+- [x] Credit J.I.B. and TannerTH25 in the README.
+- [ ] Verify permission/terms for redistributing third-party source artwork.
+- [ ] Confirm the exact target boss art, compression format, mappings, and palette.
+- [ ] Extract the required frames from `metalhedge.png` without redesigning them.
 - [ ] Confirm the ROM injection offset from a reliable source.
 - [ ] Convert/import the replacement into the required game format.
-- [ ] Add the replacement binary and `rawdata/rominjections.json`.
+- [ ] Add the verified replacement binary and `rawdata/rominjections.json`.
 - [ ] Install/enable the mod and test the Launch Base Zone Act 2 encounter.
 - [ ] Verify the boss renders correctly and its behavior remains functional.
 - [ ] Verify Sonic, Tails, and Knuckles are all still playable.
@@ -63,4 +79,4 @@ The goal is to replace or adapt the target boss's appearance so it becomes Metal
 
 The GitHub repository is a source project, not an installed mod. To test it, copy the mod folder into the Sonic 3 A.I.R. `mods` directory (or package it with the mod folder at the archive root), enable it in the game's Mods menu, and launch the game.
 
-The current starter has not yet been tested as a boss replacement. Do not describe the Launch Base boss as changed until the actual asset/data override has been implemented and verified in-game.
+The current starter has not yet been tested as a boss replacement. Do not describe the Launch Base boss as changed until the actual runtime asset/data override has been implemented and verified in-game.
