@@ -1,0 +1,35 @@
+name: Extract Metal Hedge sprite frames
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "metalhedge.png"
+      - "tools/extract_metal_hedge.py"
+      - ".github/workflows/extract-sprites.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install image tools
+        run: python -m pip install Pillow
+      - name: Extract approved frames
+        run: python tools/extract_metal_hedge.py
+      - name: Upload extracted PNG frames
+        uses: actions/upload-artifact@v4
+        with:
+          name: metal-hedge-128px-frames
+          path: build/metal-hedge-frames/
+          if-no-files-found: error
+          retention-days: 30
