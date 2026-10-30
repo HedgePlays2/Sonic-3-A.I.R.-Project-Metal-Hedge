@@ -1,90 +1,54 @@
 {
-  "name": "Metal Hedge Concept Atlas",
-  "version": 1,
-  "source": "metal-hedge-concept.svg",
-  "format": "concept-atlas",
+  "name": "Metal Hedge extracted frames",
+  "version": 2,
+  "source": "../metalhedge.png",
+  "format": "png-frame-extraction",
   "canvas": {
-    "width": 384,
-    "height": 64
+    "width": 128,
+    "height": 128
   },
-  "frameSize": {
-    "width": 64,
-    "height": 64
-  },
-  "frameCount": 6,
-  "frames": [
+  "paletteColors": 16,
+  "extractionScript": "../tools/extract_metal_hedge.py",
+  "outputDirectory": "../build/metal-hedge-frames/",
+  "groups": [
     {
       "name": "idle",
-      "x": 0,
-      "y": 0,
-      "width": 64,
-      "height": 64
+      "expectedFrames": 10
     },
     {
-      "name": "step",
-      "x": 64,
-      "y": 0,
-      "width": 64,
-      "height": 64
+      "name": "walk",
+      "expectedFrames": 9
     },
     {
-      "name": "quill_pose",
-      "x": 128,
-      "y": 0,
-      "width": 64,
-      "height": 64
+      "name": "run_dash",
+      "expectedFrames": 11
     },
     {
-      "name": "raised_quills",
-      "x": 192,
-      "y": 0,
-      "width": 64,
-      "height": 64
+      "name": "jump",
+      "expectedFrames": 6
     },
     {
-      "name": "arm_pose",
-      "x": 256,
-      "y": 0,
-      "width": 64,
-      "height": 64
+      "name": "spin_attack",
+      "expectedFrames": 6
     },
     {
-      "name": "damage_flash",
-      "x": 320,
-      "y": 0,
-      "width": 64,
-      "height": 64
+      "name": "hit_damage",
+      "expectedFrames": 5
+    },
+    {
+      "name": "defeat",
+      "expectedFrames": 5
+    },
+    {
+      "name": "boss",
+      "expectedFrames": 8
     }
   ],
-  "palette": [
-    "#087a25",
-    "#19d447",
-    "#159c35",
-    "#54ff5c",
-    "#0a1711",
-    "#f4f4d7",
-    "#b6c1c8",
-    "#27333c",
-    "#a9b7c0",
-    "#101c22",
-    "#53ff58",
-    "#aebdc7",
-    "#f6c928",
-    "#26323b",
-    "#16c83e",
-    "#b8c4cc",
-    "#687782",
-    "#e9f1f2",
-    "#18d441",
-    "#ffd32a",
-    "#ff3030",
-    "#ffb72b",
-    "#ff6b1a"
-  ],
-  "status": "source-art-only",
+  "status": "extractor-and-automation-added",
   "notes": [
-    "This atlas manifest describes the six 64x64 cells in the SVG concept strip.",
-    "It is not a Sonic 3 A.I.R. sprite replacement or ROM injection.",
-    "Do not add it to rominjections.json; boss art must first be rebuilt in the game's verified format with a verified injection location."
+    "The extractor reads the approved metalhedge.png sheet and creates transparent 128x128 PNG working frames.",
+    "Frame crops are panel-slot based and must be visually reviewed before runtime conversion.",
+    "These PNGs are not ROM injections and do not replace the Launch Base Zone Act 2 boss yet.",
+    "Do not use the discarded SVG concept as sprite source."
   ]
 }
