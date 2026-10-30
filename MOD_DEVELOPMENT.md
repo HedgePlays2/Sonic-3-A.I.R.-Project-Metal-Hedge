@@ -41,9 +41,9 @@ The Sonic 3 & Knuckles disassembly identifies Launch Base boss mapping files:
 - `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm`
 - `Levels/LBZ/Misc Object Data/Map - Final Boss 2.asm`
 
-The SonLVL project identifies `Levels/LBZ/Nemesis Art/Final Boss 1.nem` paired with `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm`. Palette leads include `Levels/LBZ/Palettes/Final Boss 1.bin` and `Levels/LBZ/Palettes/End Boss.bin`.
+The SonLVL definition `SonLVL INI Files/LBZ/FinalBoss1.xml` identifies the mapped object as **Boss (Knuckles)** and pairs `Levels/LBZ/Nemesis Art/Final Boss 1.nem` with `Levels/LBZ/Misc Object Data/Map - Final Boss 1.asm`. The art is Nemesis-compressed (the `.nem` format). The mapping table contains 44 frame entries; the SonLVL definition uses mapping frames 0, 1, 2, 4, and 10 for its main body, rockets, cockpit, gun, and fire components. The XML uses palette start index 6 for several of those mapped parts. Palette leads include `Levels/LBZ/Palettes/Final Boss 1.bin` and `Levels/LBZ/Palettes/End Boss.bin`.
 
-These are source-art and mapping leads, not a ready-to-inject A.I.R. replacement. The exact target boss runtime use, compression type, tile layout, palette compatibility, and ROM injection offset still require verification. The GameBanana boss-sprite tutorial describes using Flex 2 with the correct compressed art type, mappings, and palette to export/import mapped sprites.
+The disassembly also defines separate LBZ boss art entries: `Final Boss 2.kosm` is Kosinski-M compressed, not Nemesis-compressed. This means the fight's related boss components are not necessarily one interchangeable sprite file. The exact Act 2 runtime use of each object/art set, tile layout, palette compatibility, and ROM injection offset still require verification. The GameBanana boss-sprite tutorial describes using Flex 2 with the correct compressed art type, mappings, and palette to export/import mapped sprites.
 
 Sonic 3 A.I.R. raw-data mods place binary files under `rawdata/` and describe them in JSON using `File` and `RomInject`. The injection address must be verified against the exact source ROM/disassembly. **Never guess a ROM offset**: an incorrect address can overwrite unrelated game data.
 
@@ -54,10 +54,11 @@ The goal is to adapt the target boss's appearance to Metal Hedge while preservin
 ### Before editing runtime assets
 
 1. Obtain the Sonic 3 & Knuckles disassembly and matching Sonic 3 A.I.R. modding documentation.
-2. Inspect the Launch Base boss art, compression, mappings, and palette together.
-3. Extract the required poses from the approved `metalhedge.png` sheet into separate working files, preserving the original frame artwork and transparency.
-4. Use Flex 2 (or a compatible verified toolchain) to match the game's mapped sprite layout and import the Metal Hedge frames.
-5. Verify the target boss's ROM injection offset from the exact source ROM/disassembly and document the evidence before creating an injection entry.
+2. Inspect both Launch Base boss art sets and determine which objects/characters use each one; do not assume the Knuckles-specific `Final Boss 1` definition is the whole Act 2 encounter.
+3. Inspect the selected art's compression, mappings, and palette together.
+4. Extract the required poses from the approved `metalhedge.png` sheet into separate working files, preserving the original frame artwork and transparency.
+5. Use Flex 2 (or a compatible verified toolchain) to match the game's mapped sprite layout and import the Metal Hedge frames.
+6. Verify the target boss's ROM injection offset from the exact source ROM/disassembly and document the evidence before creating an injection entry.
 
 ### Implementation and test checklist
 
